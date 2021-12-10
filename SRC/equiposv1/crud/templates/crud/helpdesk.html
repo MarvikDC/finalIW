@@ -1,0 +1,20 @@
+{% extends 'crud/layout.html' %}
+{% block content %}
+
+    {% if user.is_staff %}
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'home' %}" >Inicio</a>
+        <h1>Ayuda</h1>
+    {% else %}
+        <a href="{% url 'bienvenido' %}" >Volver</a>
+        <h1>Solictud de Registro</h1>
+    {% endif %}
+
+    <form action="" method="POST">{% csrf_token %}
+        <p>Asunto: <input type="text" name="asunto"</p>
+        <p>EMail: <input type="text" name="email"></p>
+        <p>Mensaje: <textarea name="mensaje" rows="15" cols="45"></textarea></p>
+        <input type="submit" value="Enviar">
+    </form>
+
+{% endblock %}
